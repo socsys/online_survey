@@ -83,15 +83,13 @@ WSGI_APPLICATION = 'online_survey.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'survey_db',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',  # Change 'db' to 'risk_db'
-        'PORT': '5433',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),  # Change 'db' to 'risk_db'
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
-
-
 
 
 # Password validation

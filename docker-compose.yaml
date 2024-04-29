@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  db:
+  survey_db:
     image: postgres:latest
     container_name: survey_db
     environment:
@@ -15,14 +15,14 @@ services:
     networks:
       - surveynetwork
 
-  web:
+  survey_web:
     build: .
     volumes:
       - .:/app
     ports:
       - "8001:8001"
     depends_on:
-      - db
+      - survey_db
     env_file:
       - .env
     networks:
