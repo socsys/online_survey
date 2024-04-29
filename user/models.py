@@ -1,4 +1,3 @@
-# custom_auth/models.py
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 
@@ -15,6 +14,7 @@ class CustomUserManager(BaseUserManager):
 
     def create_superuser(self, nickname, password):
         user = self.create_user(nickname, password=password)
+        user.is_staff = True
         user.is_admin = True
         user.save(using=self._db)
         return user
@@ -24,6 +24,7 @@ class UserProfile(AbstractBaseUser):
     nickname = models.CharField(max_length=50, unique=True)
 
     is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
 
     objects = CustomUserManager()

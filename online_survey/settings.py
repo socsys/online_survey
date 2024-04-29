@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-r39+65b8g5v3c%)014$q8ar#$x#xag%t%t5*4)xr)6q1z0%n*s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*", ]
 
 
 # Application definition
@@ -83,11 +83,11 @@ WSGI_APPLICATION = 'online_survey.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),  # Change 'db' to 'risk_db'
-        'PORT': os.environ.get('DB_PORT'),
+        'NAME': 'survey_db',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',  # Change 'db' to 'risk_db'
+        'PORT': '5433',
     }
 }
 
