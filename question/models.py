@@ -20,6 +20,6 @@ class UserAnswer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     non_synthetic_real_answer = models.IntegerField()
     user_answer = models.IntegerField()
-    is_right_answer = models.BooleanField(default=Fagstlse)
+    is_right_answer = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
