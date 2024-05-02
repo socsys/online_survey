@@ -5,14 +5,11 @@ import pandas as pd
 
 from .models import Question
 
+synthetic_csv_path = os.environ.get('SYNTHETIC_CSV_PATH')
+non_synthetic_csv_path = os.environ.get('NON_SYNTHETIC_CSV_PATH')
 
-SYNTHETIC_CSV_PATH = '/Users/sf0059/Dev/online_survey/Syntehtic.csv'
-NON_SYNTHETIC_CSV_PATH = '/Users/sf0059/Dev/online_survey/Original.csv'
 
 def generate_question_and_stories(num_stories):
-    # Read file paths from environment variables
-    synthetic_csv_path = SYNTHETIC_CSV_PATH
-    non_synthetic_csv_path = NON_SYNTHETIC_CSV_PATH
 
     # Read synthetic stories from CSV
     synthetic_stories_df = pd.read_csv(synthetic_csv_path)

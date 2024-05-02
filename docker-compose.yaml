@@ -1,36 +1,21 @@
 version: '3'
 
 services:
-  survey_db:
-    image: postgres:latest
-    container_name: survey_db
-    environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-    ports:
-      - "5435:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    networks:
-      - surveynetwork
-
   survey_web:
     build: .
     volumes:
       - .:/app
     ports:
       - "8002:8002"
-    depends_on:
-      - survey_db
     env_file:
       - .env
     networks:
-      - surveynetwork
-
+      - backend_rpgnetwork
+    volumes:
+      - /home/shalini/Dataset/Synthetic-User-Study:/datasets/
 networks:
-  surveynetwork:
-    driver: bridge
+  backend_rpgnetwork:
+    external: true
 
 volumes:
   pgdata:

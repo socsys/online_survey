@@ -26,7 +26,7 @@ else
     fi
 
     echo "Starting Gunicorn..."
-    exec gunicorn online_survey:application \
+    exec gunicorn online_survey.wsgi:application \
         --config /app/gunicorn.conf.py \
         --reload
 fi
