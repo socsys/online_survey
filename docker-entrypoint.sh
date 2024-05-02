@@ -19,14 +19,14 @@ if [[ $# -gt 0 ]]; then
     INPUT=$@
     sh -c "$INPUT"
 else
-    mkdir -p /var/log/risk_playground
+    mkdir -p /var/log/online_survey
 
     if [ "$DEBUG" = "True" ]; then
         python manage.py collectstatic --noinput
     fi
 
     echo "Starting Gunicorn..."
-    exec gunicorn risk_playground.wsgi:application \
+    exec gunicorn online_survey:application \
         --config /app/gunicorn.conf.py \
         --reload
 fi
