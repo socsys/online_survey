@@ -24,6 +24,7 @@ class SubmitQuestionAnswerView(APIView):
         story_id = request.data.get('story_id')
         question_id = request.data.get('question_id')
         user_nickname = request.data.get('nickname')
+        reason = request.data.get('reason')
 
         user = get_object_or_404(UserProfile, nickname=user_nickname)
         question = get_object_or_404(Question, pk=question_id)
@@ -35,7 +36,8 @@ class SubmitQuestionAnswerView(APIView):
             question=question,
             non_synthetic_real_answer=question.non_synthetic_story_ids[0],
             user_answer=story_id,
-            is_right_answer=is_right_answer
+            is_right_answer=is_right_answer,
+            reason=reason
         )
 
         return Response(status=status.HTTP_201_CREATED)

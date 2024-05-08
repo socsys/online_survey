@@ -18,6 +18,7 @@ class Question(models.Model):
 class UserAnswer(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    reason = models.TextField()
     non_synthetic_real_answer = models.IntegerField()
     user_answer = models.IntegerField()
     is_right_answer = models.BooleanField(default=False)
